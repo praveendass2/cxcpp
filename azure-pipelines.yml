@@ -23,6 +23,6 @@ steps:
     cmakeArgs: '../Calc'
 - task: CMake@1
   inputs:
-    cmakeArgs: make
+    cmakeArgs: 'make'
 
 
