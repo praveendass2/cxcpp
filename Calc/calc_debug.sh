@@ -1,0 +1,1 @@
+cmake -B ./build -G 'Eclipse CDT4 - Unix Makefiles' -DCMAKE_ECLIPSE_GENERATE_LINKED_RESOURCES=FALSE -DCMAKE_ECLIPSE_VERSION='4.5 (Mars)' -DCMAKE_ECLIPSE_MAKE_ARGUMENTS=-j${nproc} -DCMAKE_INSTALL_PREFIX=./install -DCMAKE_PREFIX_PATH="./install" -DCMAKE_BUILD_TYPE=Debug && cd ./build && make
