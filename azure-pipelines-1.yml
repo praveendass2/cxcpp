@@ -10,7 +10,7 @@ resources:
 
 variables:
   tag: '$(Build.BuildId)'
-  dockerfilePath: '$(Build.SourcesDirectory)/app/Dockerfile'
+  dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
   
 stages:
 - stage: Build
