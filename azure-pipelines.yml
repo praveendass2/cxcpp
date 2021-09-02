@@ -33,10 +33,10 @@ steps:
 
    
 - task: CopyFiles@2
-  displayName: 'Copy Files to: $(Build.SourcesDirectory)'
+  displayName: 'Copy Files to: $(Build.artifactstagingdirectory)'
   inputs:
     SourceFolder: '$(Build.SourcesDirectory)/Calc/source'
-    Contents: 'calc-exec'
+    Contents: 'Calc-exec'
     TargetFolder: '$(build.artifactstagingdirectory)'
 - task: PublishBuildArtifacts@1
   inputs:
