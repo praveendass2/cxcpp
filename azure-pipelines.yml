@@ -28,6 +28,6 @@ steps:
       echo Write your commands here
       
       echo Hello world
-      
+      cd build
       make
 
