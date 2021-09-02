@@ -12,20 +12,7 @@ RUN  apt-get  update \
  
 ENV PATH="/usr/cmake-3.17.3-Linux-x86_64/bin:${PATH}"
 
-COPY compile.sh /usr/share/compile.sh
-COPY package.sh /usr/share/package.sh
-COPY read.sh /usr/share/read.sh
-
-# Add user jenkins to the image
-RUN adduser --quiet jenkins
-RUN echo "jenkins:jenkins" | chpasswd
-    
-# Jenkins
-RUN mkdir /home/jenkins/workspace
-RUN chown jenkins.jenkins /home/jenkins/workspace
-
-RUN mkdir /tmp/fdk/
-    
+   
 # Standard SSH port
 EXPOSE 22
 
