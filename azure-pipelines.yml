@@ -21,6 +21,13 @@ steps:
 - task: CMake@1
   inputs:
     cmakeArgs: '../Calc'
-- script: 'make'
 
+- task: CmdLine@2
+  inputs:
+    script: |
+      echo Write your commands here
+      
+      echo Hello world
+      
+      make
 
