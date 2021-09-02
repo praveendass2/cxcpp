@@ -6,41 +6,48 @@
 trigger:
 - master
 
-pool:
-  vmImage: ubuntu-latest
+variables:
+  buildConfiguration: 'Release'
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+stages:
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+# Build Stage
+- stage: Build
+  jobs:
+  - job:
+    pool:
+      vmImage: ubuntu-latest
+    steps:
+    - script: echo Hello, world!
+      displayName: 'Run a one-line script'
 
-- task: CMake@1
-  inputs:
-    cmakeArgs: '../Calc'
+    - script: |
+        echo Add other tasks to build, test, and deploy your project.
+        echo See https://aka.ms/yaml
+      displayName: 'Run a multi-line script'
 
-- task: CmdLine@2
-  inputs:
-    script: |
-      echo Write your commands here
-      
-      echo Hello world
-      cd build
-      make
+    - task: CMake@1
+      inputs:
+        cmakeArgs: '../Calc'
 
-   
-- task: CopyFiles@2
-  displayName: 'Copy Files to: $(Build.artifactstagingdirectory)'
-  inputs:
-    SourceFolder: '$(Build.SourcesDirectory)/build/source'
-    Contents: 'calc-exec'
-    TargetFolder: '$(build.artifactstagingdirectory)'
-- task: PublishBuildArtifacts@1
-  inputs:
-        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-        ArtifactName: 'output'
-        publishLocation: 'Container'
+    - task: CmdLine@2
+      inputs:
+        script: |
+          echo Write your commands here
+          echo Hello world
+          cd build
+          make
+
+    - task: CopyFiles@2
+      displayName: 'Copy Files to: $(Build.artifactstagingdirectory)'
+      inputs:
+          SourceFolder: '$(Build.SourcesDirectory)/build/source'
+          Contents: 'calc-exec'
+          TargetFolder: '$(build.artifactstagingdirectory)'
+     
+    - task: PublishBuildArtifacts@1
+      inputs:
+            PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+            ArtifactName: 'output'
+            publishLocation: 'Container'
 
