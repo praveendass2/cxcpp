@@ -31,3 +31,16 @@ steps:
       cd build
       make
 
+   
+- task: CopyFiles@2
+  displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
+  inputs:
+    SourceFolder: '../source/'
+    Contents: 'calc-exec'
+    TargetFolder: '$(build.artifactstagingdirectory)'
+- task: PublishBuildArtifacts@1
+  inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        ArtifactName: 'output'
+        publishLocation: 'Container'
+
